@@ -46,7 +46,7 @@ header {
 
 section {
     background-color: #fff;
-    border-radius: 1rem;
+    border-radius: 2rem;
 }
 
 #notes {
@@ -56,14 +56,8 @@ section {
 .data {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 16px 20px
-}
-time {
-    background: #5F9EA0;
-    color: white;
-    padding: 2px 6px;
-    border-radius: 14px;
-    font-size: 12px;
 }
 
 #notes {
@@ -72,15 +66,14 @@ time {
 
 .data {
     font-size: 15px;
-    color: gray;
+    color: #202124;
     line-height: 1.4;
-    background-color: #f7f7f7
 }
 
-#notes div {
+#notes .m {
     overflow: hidden;
     border-bottom: 3px solid #fff;
-    border-radius: 10px
+    border-radius: 30px
 }
 
 #notes .data {
@@ -103,8 +96,8 @@ time {
     border-top-right-radius: 10px
 }
 
-#notes div:hover .data {
-    background: #ebebeb;
+#notes .m:hover .data {
+    background: #e8f0fe;
     cursor: pointer
 }
 
@@ -128,4 +121,53 @@ section {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #000;
+}
+
+.more {
+    transform: scale(var(--ggs, 1))
+}
+
+.more,
+.more::after,
+.more::before {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 6px;
+    height: 6px;
+    border: 2px solid;
+    border-radius: 100%
+}
+
+.more::after,
+.more::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: -2px
+}
+
+.more::before {
+    top: -10px
+}
+.mi {
+    padding: 15px;
+    border-radius: 18px;
+}
+.mi:hover {
+    background: #fff;
+    /* background: rgb(231 231 231); */
+    cursor: pointer
+}
+.opt {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+time {
+    padding: 4px 20px;
+    border-radius: 15px;
+    font-size: 13px;
+    opacity: 0.8;
 }
