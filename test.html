@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .custom-menu {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      min-width: 120px;
+      z-index: 1000;
+    }
+    .custom-menu-option {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+  <div class="custom-menu" id="context-menu">
+    <div class="custom-menu-option" onclick="handleMenuClick('Option 1')">Option 1</div>
+    <div class="custom-menu-option" onclick="handleMenuClick('Option 2')">Option 2</div>
+    <div class="custom-menu-option" onclick="handleMenuClick('Option 3')">Option 3</div>
+  </div>
+
+  <script>
+    function handleMenuClick(option) {
+      alert(`You clicked on: ${option}`);
+    }
+
+    document.addEventListener("contextmenu", function(event) {
+      event.preventDefault();
+      const contextMenu = document.getElementById("context-menu");
+      contextMenu.style.display = "block";
+      contextMenu.style.left = event.pageX + "px";
+      contextMenu.style.top = event.pageY + "px";
+    });
+
+    document.addEventListener("click", function(event) {
+      const contextMenu = document.getElementById("context-menu");
+      contextMenu.style.display = "none";
+    });
+  </script>
+</body>
+</html>
