@@ -26,11 +26,11 @@
 </head>
 
 <body>
-    <div id="editorjs"></div>
+    <div id="text"></div>
     <script>
         const editor = new EditorJS({
-            holder: document.getElementById('editorjs'),
-            tools: {}, // Add your desired tools here
+            holder: document.getElementById('text'),
+            tools: {},
             onChange: (api) => {
                 api.saver.save().then((outputData) => {
                     console.log('Editor.js content:', outputData);

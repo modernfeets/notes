@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Data Compression with Pako</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
+    <script>
+        const jsonObject = { key1: 'value1', key2: 'value2', key3: [1, 2, 3] };
+        const jsonString = JSON.stringify(jsonObject);
+        const utf8Encoder = new TextEncoder();
+        const compressedData = pako.deflate(utf8Encoder.encode(jsonString), { to: 'string' });
+        const base64Encoded = btoa(String.fromCharCode.apply(null, compressedData));
+        console.log('Base64 Encoded:', base64Encoded);
+    </script>
+</body>
+
+</html>
