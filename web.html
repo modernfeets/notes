@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor.js Starter</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest/dist/editorjs.bundle.min.css">
+</head>
+<body>
+  <div id="editorjs"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+  <script>
+    const editor = new EditorJS({
+      holder: document.getElementById('editorjs'),
+      tools: {}, // Add your desired tools here
+      onChange: (api) => {
+        api.saver.save().then((outputData) => {
+          console.log('Editor.js content:', outputData);
+        }).catch((error) => {
+          console.error('Saving failed:', error);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
