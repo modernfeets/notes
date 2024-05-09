@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>RZN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+    <main>
+        <header>
+            <h2>MEGA DOCS</h2>
+        </header>
+        <section>
+            <div id="notes"></div>
+        </section>
+    </main>
+    <script>
+        const options = {
+            method: 'POST',
+            headers: { Authorization: 'Bearer xau_65aZvDwyiAid6sPgcpyvSvuiddHxsAFJ7', 'Content-Type': 'application/json' },
+            body: '{"columns":["title"],"sort":{"xata.updatedAt":"desc"}}'
+        };
+
+        fetch('https://ragnar-s-workspace-bvgt2l.ap-southeast-2.xata.sh/db/rxn:main/tables/notes/query', options)
+            .then(response => response.json())
+            .then(fetchedData => {
+                const notesElement = document.getElementById('notes');
+
+                fetchedData.records.forEach(({ id, title, xata }) => {
+                    const updatedAt = f(xata.updatedAt);
+                    // console.log(updatedAt);
+                    const template = `
+                        <a href="/view?id=${id}" class="m">
+                            <div class="data">
+                                <div class="first">
+                                    <div class="di"><i class="doc-icon"></i></div>
+                                    <span id="1">${title}</span>
+                                </div>
+                                <time>${updatedAt}</time>
+                            </div>
+                        </a>
+                    `;
+                    notesElement.insertAdjacentHTML('beforeend', template);
+                });
+            })
+            .catch(err => console.error(err));
+
+        // function formatUpdatedAt(updatedAt) {
+        //     const date = new Date(updatedAt);
+        //     const now = new Date();
+        //     const diffInMilliseconds = now - date;
+        //     const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
+        //     const diffInMinutes = Math.floor(diffInSeconds / 60);
+        //     const diffInHours = Math.floor(diffInMinutes / 60);
+
+        //     if (diffInSeconds < 60) {
+        //         return 'just now';
+        //     } else if (diffInMinutes < 60) {
+        //         return `${diffInMinutes} minutes ago`;
+        //     } else if (diffInHours < 24) {
+        //         return `${diffInHours} hours ago`;
+        //     } else {
+        //         return date.toLocaleDateString('en-GB', {
+        //             day: 'numeric',
+        //             month: 'long',
+        //             year: 'numeric'
+        //         });
+        //     }
+        // }
+
+        f=u=>{d=new Date(u);n=new Date();m=Math.floor((n-d)/6e4);h=Math.floor(m/60);if(m<1)return'just now';if(m<60)return`few min. ago`;if(h<24)return`few hours ago`;return d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}
+    </script>
+</body>
+
+</html>

@@ -106,11 +106,26 @@
                 transform: rotate(360deg);
             }
         }
+
+        .pre {
+            text-align: center;
+            position: sticky;
+            top: 50%;
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
 
 <body>
-    <div class="loading"><div></div><div></div><div></div><div></div></div>
+    <div class="pre">
+        <div class="loading">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
     <div id="text"></div>
     <button id="btn" type="submit">Save</button>
     <script>
@@ -118,13 +133,23 @@
         function d(s) { return JSON.parse(new TextDecoder().decode(pako.inflate(new Uint8Array(atob(s).split('').map(c => c.charCodeAt(0)))))); }
 
         async function fetchData() {
+            // Display preloader
+            document.querySelector('.loading').style.display = 'block';
+
             const response = await fetch('json/data.json');
             const data = await response.json();
             const decompressedData = d(data[0]);
+
+            // Hide preloader
+            document.querySelector('.loading').style.display = 'none';
+
             return decompressedData;
         }
 
         async function initEditor() {
+            // Display preloader
+            document.querySelector('.loading').style.display = 'block';
+
             const savedData = await fetchData(); // Fetch the previously saved data
 
             const editor = new EditorJS({
@@ -159,6 +184,7 @@
                 },
                 data: savedData
             });
+
             const saveButton = document.getElementById('btn');
             saveButton.addEventListener('click', () => {
                 editor.save().then((outputData) => {
@@ -168,7 +194,10 @@
                 });
             });
 
+            // Hide preloader
+            document.querySelector('.loading').style.display = 'none';
         }
+
         initEditor();
     </script>
 </body>

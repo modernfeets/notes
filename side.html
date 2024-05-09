@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            background-color: #000;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+
+        #sidebar a {
+            outline: none;
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        #sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        #sidebar .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        #sidebar .add-link-btn {
+            position: absolute;
+            top: 0;
+            right: 60px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        #content {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="sidebar" style="left: -200px;">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="javascript:void(0)" class="add-link-btn" onclick="addLink()">+</a>
+        <a href="#" contenteditable="true">Link 1</a>
+        <a href="#" contenteditable="true">Link 2</a>
+        <a href="#" contenteditable="true">Link 3</a>
+    </div>
+
+    <div id="content">
+        <p>Main content goes here.</p>
+        <button onclick="toggleSidebar()">Toggle Sidebar</button>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            if (sidebar.style.left === "-200px") {
+                sidebar.style.left = "0";
+                content.style.marginLeft = "200px";
+            } else {
+                sidebar.style.left = "-200px";
+                content.style.marginLeft = "0";
+            }
+        }
+
+        function closeSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            sidebar.style.left = "-200px";
+            content.style.marginLeft = "0";
+        }
+
+        function addLink() {
+            var sidebar = document.getElementById('sidebar');
+            var newLink = document.createElement('a');
+            newLink.href = "#";
+            newLink.contentEditable = true;
+            newLink.innerText = "New Link";
+            sidebar.appendChild(newLink);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<div class="center">
+    <button style="text-align:center;" onclick="toastFunction()">Show Toast</button>
+</div>
+
+<div id="toast">
+<!-- <div id="toast" class="show"> -->
+    <div class="checkicon"> <i class="fas fa-check-square"></i> </div>
+    SUCCESS: We have received your registration. Thanks!
+</div>
+<style>
+    button {
+        position: absolute;
+        top: 50%;
+        border: none;
+        padding: 20px;
+        background: #a3a3a3;
+        border-radius: 10px;
+        color: black;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: orange;
+        color: white;
+    }
+
+    #toast {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -200px;
+        background-color: #979797;
+        color: black;
+        text-align: center;
+        border-radius: 10px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        top: 30px;
+        font-size: 16px;
+    }
+
+    #toast.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+        from {
+            top: 0;
+            opacity: 0;
+        }
+
+        to {
+            top: 30px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadein {
+        from {
+            top: 0;
+            opacity: 0;
+        }
+
+        to {
+            top: 30px;
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeout {
+        from {
+            top: 30px;
+            opacity: 1;
+        }
+
+        to {
+            top: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeout {
+        from {
+            top: 30px;
+            opacity: 1;
+        }
+
+        to {
+            top: 0;
+            opacity: 0;
+        }
+    }
+
+    .checkicon i {
+        font-size: 40px;
+        color: #47d764;
+    }
+</style>
+<script>
+    function toastFunction() {
+        var x = document.getElementById("toast");
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    }
+
+</script>

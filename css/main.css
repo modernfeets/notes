@@ -49,7 +49,7 @@ section {
     border-radius: 2rem;
 }
 
-#notes {
+section > div {
     width: 100%
 }
 
@@ -60,7 +60,7 @@ section {
     padding: 16px 20px
 }
 
-#notes {
+section > div {
     padding: 10px;
 }
 
@@ -70,14 +70,14 @@ section {
     line-height: 1.4;
 }
 
-#notes .m {
+section > div .m {
     overflow: hidden;
     text-decoration: none;
     border-bottom: 3px solid #fff;
     border-radius: 30px
 }
 
-#notes .data {
+section > div .data {
     border: solid 1px transparent;
     cursor: pointer;
     border-style: solid none;
@@ -85,19 +85,19 @@ section {
     padding-bottom: 10px
 }
 
-#notes p:first-child {
+section > div p:first-child {
     border-left-style: solid;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px
 }
 
-#notes p:last-child {
+section > div p:last-child {
     border-right-style: solid;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px
 }
 
-#notes .m:hover .data {
+section > div .m:hover .data {
     background: #e8f0fe;
     border-radius: 30px;
     cursor: pointer
@@ -130,12 +130,6 @@ section {
     align-items: center;
 }
 
-.opt {
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 .size {
     font-size: 11px;
     color: #fff;
@@ -195,5 +189,5 @@ time {
 }
 
 .di {
-    width: 40px;
+    margin-right: 25px;
 }
